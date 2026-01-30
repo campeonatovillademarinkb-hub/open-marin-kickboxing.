@@ -9,113 +9,173 @@
             --primario: #003049;
             --rojo: #d62828;
             --dorado: #fcbf49;
-            --fondo: #001d2d; 
+            --fondo: #000c14; 
             --texto: #ffffff;
         }
 
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: var(--fondo); color: var(--texto); line-height: 1.6; }
+        * { box-sizing: border-box; }
+        body, html { 
+            margin: 0; padding: 0; 
+            font-family: 'Segoe UI', sans-serif; 
+            background-color: var(--fondo); 
+            color: var(--texto); 
+            height: 100%;
+        }
 
-        header { 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('banner.png') center/cover no-repeat;
-            height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; border-bottom: 5px solid var(--rojo);
-            background-color: #000; text-align: center; padding: 0 20px;
+        /* NAVEGACIÓN */
+        nav {
+            background: var(--primario);
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            border-bottom: 3px solid var(--rojo);
+        }
+        .nav-logo { font-weight: bold; color: var(--dorado); cursor: pointer; text-decoration: none; font-size: 1.2rem; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 0.85rem; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--dorado); }
+
+        /* SECCIONES */
+        .page-section { display: none; min-height: 100vh; padding: 100px 20px 40px; }
+
+        /* INICIO */
+        #inicio { 
+            display: flex; 
+            padding: 0;
+            background: url('banner.png') center/contain no-repeat;
+            background-color: #000;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 60px;
         }
 
         .btn-inscripcion {
-            background: var(--rojo); color: white; padding: 22px 45px; font-size: 1.5rem; font-weight: bold;
-            border: 4px solid white; border-radius: 10px; cursor: pointer; text-transform: uppercase;
-            box-shadow: 0 0 25px rgba(214, 40, 40, 0.6); transition: 0.3s; margin-bottom: 25px;
+            background: var(--rojo); color: white; padding: 18px 35px; font-size: 1.3rem; font-weight: bold;
+            border: 3px solid white; border-radius: 8px; cursor: pointer; text-transform: uppercase;
+            box-shadow: 0 5px 20px rgba(214, 40, 40, 0.4); transition: 0.3s;
         }
 
-        .header-links { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
-        .link-item {
-            background: rgba(255, 255, 255, 0.15); color: white; padding: 10px 20px;
-            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.9rem;
-            border: 1px solid rgba(255,255,255,0.4);
-        }
+        /* CONTENIDO */
+        .content-container { max-width: 900px; margin: 0 auto; line-height: 1.6; }
+        h2 { color: var(--dorado); border-bottom: 2px solid var(--rojo); display: inline-block; margin-bottom: 25px; text-transform: uppercase; }
 
-        .container { max-width: 800px; margin: auto; padding: 40px 20px; }
-        h2 { color: var(--dorado); border-bottom: 3px solid var(--rojo); display: inline-block; margin-bottom: 25px; text-transform: uppercase; }
-
-        .schedule-card { background: rgba(255,255,255,0.05); border-radius: 15px; overflow: hidden; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        /* HORARIO */
+        .schedule-card { background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
         .schedule-table { width: 100%; border-collapse: collapse; }
-        .day-header { background: var(--rojo); color: white; font-weight: bold; text-align: center; padding: 10px; }
-        .time { font-weight: bold; color: var(--dorado); width: 120px; padding: 12px; }
+        .day-header { background: var(--rojo); color: white; padding: 15px; text-align: center; font-weight: bold; }
+        .schedule-table td { padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .time { color: var(--dorado); font-weight: bold; width: 110px; }
 
-        .ubicacion-box {
-            background: var(--primario); border: 2px solid var(--dorado); 
-            padding: 30px; border-radius: 15px; text-align: center; margin: 30px 0; text-decoration: none; display: block; color: white;
-            transition: 0.3s;
+        /* PATROCINADORES */
+        .logos-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
+            gap: 30px; 
+            align-items: center; 
+            background: white; 
+            padding: 40px; 
+            border-radius: 20px;
+            text-align: center;
         }
-        .ubicacion-box:hover { background: #004060; transform: scale(1.02); }
+        .logos-grid img { max-width: 100%; height: auto; max-height: 70px; }
+        .sponsor-name { color: #333; font-weight: bold; margin-top: 10px; display: block; font-size: 0.9rem; }
 
-        .section-logos { background: #ffffff; padding: 40px 20px; border-radius: 30px 30px 0 0; color: #333; text-align: center; }
-        .logos-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; align-items: center; }
-        .logos-wrapper img { height: 60px; }
+        /* CONTACTO */
+        .contact-box { background: rgba(255,255,255,0.05); padding: 30px; border-radius: 15px; text-align: center; }
+        .contact-link { display: block; color: white; text-decoration: none; font-size: 1.1rem; margin: 10px 0; }
+        .map-link { display: inline-block; margin-top: 20px; color: var(--dorado); text-decoration: none; font-weight: bold; border: 1px solid var(--dorado); padding: 10px 20px; border-radius: 5px; }
 
-        /* MODAL */
-        #modalInscripcion { display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
-        .modal-cont { background: #fdfdfd; color: #222; margin: 2% auto; padding: 30px; width: 90%; max-width: 500px; border-radius: 20px; position: relative; }
+        /* MODAL Y FORMULARIO (ENCUESTA RECUPERADA) */
+        #modalInscripcion { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; padding: 20px 0; }
+        .modal-cont { background: #fdfdfd; color: #222; margin: 20px auto; padding: 30px; width: 90%; max-width: 500px; border-radius: 20px; position: relative; }
         .cerrar { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; color: var(--rojo); }
         
-        .tasas-info { display: flex; justify-content: space-between; background: #003049; color: white; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 0.8rem; text-align: center; }
+        .tasas-info { display: flex; justify-content: space-between; background: var(--primario); color: white; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 0.8rem; text-align: center; }
         .tasa-item { flex: 1; border-right: 1px solid rgba(255,255,255,0.2); }
         .tasa-item:last-child { border: none; }
         .tasa-item strong { display: block; color: var(--dorado); font-size: 1rem; }
 
-        input, select { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
-        .info-pago { background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; border: 1px solid #ffeeba; margin: 15px 0; font-size: 0.85rem; }
+        input { width: 100%; padding: 10px; margin: 8px 0; border-radius: 5px; border: 1px solid #ccc; }
         .total-pago { font-size: 1.5rem; font-weight: bold; color: var(--rojo); text-align: center; margin: 15px 0; background: #eee; border-radius: 8px; padding: 10px; }
-        
         .btn-enviar { background: #1b9e77; color: white; width: 100%; padding: 18px; border: none; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <header>
-        <button class="btn-inscripcion" onclick="abrir()">¡INSCRIBIRSE AHORA!</button>
-        <div class="header-links">
-            <a href="mailto:campeonatovillademarinkb@gmail.com" class="link-item">📧 Contáctanos</a>
-            <a href="https://www.instagram.com/campeonatovillademarinkb" target="_blank" class="link-item">📸 Instagram</a>
+    <nav>
+        <div class="nav-logo" onclick="showPage('inicio')">VILLA DE MARÍN</div>
+        <div class="nav-links">
+            <a onclick="showPage('acerca')">El Campeonato</a>
+            <a onclick="showPage('horario')">Horario</a>
+            <a onclick="showPage('patrocinadores')">Patrocinadores</a>
+            <a onclick="showPage('contacto')">Contacto</a>
         </div>
-    </header>
+    </nav>
 
-    <div class="container">
-        
-        <h2>📅 Horario del Campeonato</h2>
-        <div class="schedule-card">
-            <table class="schedule-table">
-                <tr><td colspan="2" class="day-header">SÁBADO</td></tr>
-                <tr><td class="time">08:00</td><td>Recepción de Clubs</td></tr>
-                <tr><td class="time">08:15</td><td>Pesaje Oficial</td></tr>
-                <tr><td class="time">09:00</td><td>Inicio Competición</td></tr>
-                <tr><td class="time">13:30</td><td>Parada Comida</td></tr>
-                <tr><td class="time">15:30</td><td>Reinicio</td></tr>
-                <tr><td class="time">20:00</td><td>Fin Jornada</td></tr>
-                <tr><td colspan="2" class="day-header">DOMINGO</td></tr>
-                <tr><td class="time">09:00</td><td>Inicio Finales</td></tr>
-                <tr><td class="time">13:00</td><td>Entrega Premios</td></tr>
-            </table>
+    <section id="inicio" class="page-section" style="display: flex;">
+        <button class="btn-inscripcion" onclick="abrirModal()">¡Inscríbete Ahora!</button>
+    </section>
+
+    <section id="acerca" class="page-section">
+        <div class="content-container">
+            <h2>El Campeonato</h2>
+            <p>El <strong>I Open Internacional Villa de Marín</strong> es el evento de referencia para los deportes de contacto en la región. Reúne a deportistas en las modalidades de <strong>Point Fight, Light Contact, Kick Light y No Contact</strong> bajo el aval de la <strong>FGKM</strong>.</p>
+            <p>Buscamos promover un estilo de vida saludable y los valores fundamentales de las artes marciales: respeto, humildad y esfuerzo constante.</p>
         </div>
+    </section>
 
-        <a href="https://www.google.com/maps/place/?q=place_id:ChIJnf-GBpxvLw0R5GLYtmxrA3U" target="_blank" class="ubicacion-box">
-            <p style="margin:0;">📍 <strong>Pavillón Colexio San Narciso</strong></p>
-            <p style="margin:5px 0 0; font-size: 0.9rem;">Chan do Monte, 27, Marín. Haz clic para abrir Google Maps.</p>
-        </a>
-    </div>
-
-    <div class="section-logos">
-        <div class="logos-wrapper">
-            <img src="https://www.concellodemarin.es/wp-content/uploads/2021/05/logo-concello-marin.png" alt="Marín">
-            <img src="https://www.xunta.gal/xunta-theme/images/logos/logo-xunta.png" alt="Xunta">
-            <img src="https://abpsport.com/wp-content/uploads/2019/11/logo-abp.png" alt="ABP Sport">
-            <img src="https://fgkickboxing.com/wp-content/uploads/2021/04/logo-fgkm.png" alt="FGKM">
+    <section id="horario" class="page-section">
+        <div class="content-container">
+            <h2>📅 Horario Oficial</h2>
+            <div class="schedule-card">
+                <table class="schedule-table">
+                    <tr><td colspan="2" class="day-header">SÁBADO 14 DE FEBRERO</td></tr>
+                    <tr><td class="time">08:00</td><td>Recepción de Clubs</td></tr>
+                    <tr><td class="time">08:15</td><td>Pesaje Oficial y Control Médico</td></tr>
+                    <tr><td class="time">09:00</td><td>Inicio de la Competición</td></tr>
+                    <tr><td class="time">13:30</td><td>Parada para Comida</td></tr>
+                    <tr><td class="time">15:30</td><td>Reinicio de Jornada de Tarde</td></tr>
+                    <tr><td class="time">20:00</td><td>Cierre de la Jornada</td></tr>
+                    <tr><td colspan="2" class="day-header">DOMINGO 15 DE FEBRERO</td></tr>
+                    <tr><td class="time">09:00</td><td>Inicio de Finales</td></tr>
+                    <tr><td class="time">13:00</td><td>Entrega de Premios</td></tr>
+                </table>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section id="patrocinadores" class="page-section">
+        <div class="content-container">
+            <h2 style="color: white;">Patrocinadores</h2>
+            <div class="logos-grid">
+                <div><img src="https://abpsport.com/wp-content/uploads/2019/11/logo-abp.png" alt="ABP"><span class="sponsor-name">ABP Sport</span></div>
+                <div><img src="https://www.concellodemarin.es/wp-content/uploads/2021/05/logo-concello-marin.png" alt="Concello"><span class="sponsor-name">Concello de Marín</span></div>
+                <div><img src="https://www.xunta.gal/xunta-theme/images/logos/logo-xunta.png" alt="Xunta"><span class="sponsor-name">Xunta de Galicia</span></div>
+                <div><img src="https://customfighter.es/img/custom-fighter-logo-1616496637.jpg" alt="Custom Fighter"><span class="sponsor-name">Custom Fighter</span></div>
+                <div><span class="sponsor-name" style="font-size: 1.2rem; color: #003049; margin-top: 0;">SEI San Narciso</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="page-section">
+        <div class="content-container">
+            <h2>Contacto y Ubicación</h2>
+            <div class="contact-box">
+                <a href="mailto:campeonatovillademarinkb@gmail.com" class="contact-link">📧 campeonatovillademarinkb@gmail.com</a>
+                <a href="https://www.instagram.com/campeonatovillademarinkb" target="_blank" class="contact-link">📸 @campeonatovillademarinkb</a>
+                <p style="margin-top: 20px;">📍 <strong>Sede:</strong> SEI San Narciso, Marín.</p>
+                <a href="#" class="map-link">Ver en Google Maps</a>
+            </div>
+        </div>
+    </section>
 
     <div id="modalInscripcion">
         <div class="modal-cont">
-            <span class="cerrar" onclick="cerrar()">×</span>
+            <span class="cerrar" onclick="cerrarModal()">×</span>
             <h2 style="color: var(--primario); margin:0 0 15px 0; border-bottom: 2px solid var(--rojo);">Inscripción</h2>
             
             <div class="tasas-info">
@@ -127,16 +187,14 @@
 
             <form id="formFinal">
                 <input type="text" placeholder="Nombre y Apellidos" required>
-                <input type="email" placeholder="Email de contacto" required>
                 <input type="text" placeholder="Club" required>
-                
                 <div style="display:flex; gap:10px;">
                     <input type="number" placeholder="Edad" required>
                     <input type="number" step="0.1" placeholder="Peso (kg)" required>
                 </div>
 
-                <div style="background:#f4f4f4; padding:10px; border-radius:8px; margin-top:10px;">
-                    <label style="font-weight:bold; display:block; margin-bottom:5px;">Selecciona Modalidades:</label>
+                <div style="background:#f4f4f4; padding:10px; border-radius:8px; margin-top:10px; color: #333;">
+                    <label style="font-weight:bold; display:block; margin-bottom:5px;">Modalidades:</label>
                     <label style="display:block;"><input type="checkbox" class="mod-check"> Point Fight</label>
                     <label style="display:block;"><input type="checkbox" class="mod-check"> Light Contact</label>
                     <label style="display:block;"><input type="checkbox" class="mod-check"> Kick Light</label>
@@ -144,20 +202,23 @@
                 </div>
 
                 <div class="total-pago" id="pagoMostrado">Total a pagar: 0€</div>
-
-                <div class="info-pago">
-                    <strong>Información de Pago:</strong> El pago se gestionará a través de los clubs. Recibirás un correo con la verificación del mismo.
-                </div>
-
                 <button type="submit" class="btn-enviar">ENVIAR INSCRIPCIÓN</button>
             </form>
         </div>
     </div>
 
     <script>
-        function abrir() { document.getElementById("modalInscripcion").style.display = "block"; document.body.style.overflow = "hidden"; }
-        function cerrar() { document.getElementById("modalInscripcion").style.display = "none"; document.body.style.overflow = "auto"; }
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(s => s.style.display = 'none');
+            const page = document.getElementById(pageId);
+            page.style.display = (pageId === 'inicio') ? 'flex' : 'block';
+            window.scrollTo(0,0);
+        }
+
+        function abrirModal() { document.getElementById("modalInscripcion").style.display = "block"; document.body.style.overflow = "hidden"; }
+        function cerrarModal() { document.getElementById("modalInscripcion").style.display = "none"; document.body.style.overflow = "auto"; }
         
+        // Lógica de la encuesta (cálculo de precio)
         const checks = document.querySelectorAll('.mod-check');
         checks.forEach(c => c.addEventListener('change', () => {
             const num = document.querySelectorAll('.mod-check:checked').length;
